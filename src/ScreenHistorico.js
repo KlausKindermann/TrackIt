@@ -1,14 +1,14 @@
 import styled from "styled-components"
-import { Link } from "react-router-dom";
 import { AuthContext } from "./auth";
 import React from "react";
+import Menu from "./Menu";
 
 
 export default function ScreenHistorico() {
     const {user, setUser} = React.useContext(AuthContext)
     return (
         <Screen>
-            <Header>
+            <Header data-test="header">
                 <h1>TrackIt</h1>
                 <img src={user.image} alt="Imagem usuário" />
             </Header>
@@ -16,11 +16,7 @@ export default function ScreenHistorico() {
                 <h1>Histórico</h1>
             </Top>
             <Info>Em breve você poderá ver o histórico dos seus hábitos aqui!</Info>
-            <Bottom>
-                <Link to={`/habitos`}><p>Hábitos</p></Link>
-                <Link to={`/hoje`}><p>Hoje</p></Link>
-                <Link to={`/historico`}><p>Histórico</p></Link>
-            </Bottom>
+            <Menu/>
         </Screen>
     )
 }

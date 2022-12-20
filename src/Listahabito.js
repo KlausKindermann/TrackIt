@@ -14,19 +14,23 @@ export default function ListaHabitos({ info }) {
         { "id": 6, "name": "S" },
     ]
     const [day, setDay] = useState([])
- 
+
+    function excluirTarefa() {
+        alert("")
+    }
+
     return (
-        <HabitoCriado>
+        <HabitoCriado data-test="habit-container">
             <Topo>
-                <h1>{info.name}</h1>
-                <ion-icon name="trash-outline"></ion-icon>
+                <h1 data-test="habit-name" >{info.name}</h1>
+                <ion-icon data-test="habit-delete-btn" onClick={excluirTarefa} name="trash-outline"></ion-icon>
             </Topo>
             <Week>
                 {dias.map(dia => (
-                    <Day2
+                    <Day2 data-test="habit-day" 
                         key={dia.id}
                         dia={dia}
-                        />
+                    />
                 ))}
             </Week>
         </HabitoCriado>

@@ -7,6 +7,7 @@ import Day from "./Day";
 import React from "react";
 import { useEffect } from "react";
 import ListaHabitos from "./Listahabito";
+import Menu from "./Menu";
 
 export default function ScreenHabitos() {
 
@@ -83,17 +84,17 @@ export default function ScreenHabitos() {
     }
     return (
         <Screen>
-            <Header>
+            <Header data-test="header">
                 <h1>TrackIt</h1>
                 <img src={user.image} alt="Imagem usuário" />
             </Header>
             <Top>
                 <h1> Meus hábitos</h1>
-                <Add onClick={criarHabito}>+</Add>
+                <Add data-test="habit-create-btn" onClick={criarHabito}>+</Add>
             </Top>
             {criando === false ?
-                <Habito>
-                    <input
+                <Habito data-test="habit-create-container">
+                    <input data-test="habit-name-input"
                         name="name"
                         value={form.name}
                         onChange={handleForm}
@@ -102,7 +103,7 @@ export default function ScreenHabitos() {
                     />
                     <Week>
                         {dias.map(dia => (
-                            <Day
+                            <Day data-test="habit-day"
                                 key={dia.id}
                                 dia={dia}
                                 selecionarDia={selecionarDia}
@@ -110,18 +111,14 @@ export default function ScreenHabitos() {
                         ))}
                     </Week>
                     <Options>
-                        <h1 onClick={cancel}>Cancelar</h1>
-                        <Salvar onClick={salvarHabito}> Salvar </Salvar>
+                        <h1 data-test="habit-create-cancel-btn" onClick={cancel}>Cancelar</h1>
+                        <Salvar  data-test="habit-create-save-btn" onClick={salvarHabito}> Salvar </Salvar>
                     </Options>
                 </Habito>
                 : ""}
             {habitosCriados.map((info) => <ListaHabitos key={info.id} info={info} />)}
             <Info>{info}</Info>
-            <Bottom>
-                <Link to={`/habitos`}><p>Hábitos</p></Link>
-                <Link to={`/hoje`}><p>Hoje</p></Link>
-                <Link to={`/historico`}><p>Histórico</p></Link>
-            </Bottom>
+            <Menu/>
         </Screen>
 
     )

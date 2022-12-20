@@ -29,37 +29,37 @@ export default function ScreenLogin() {
     return (
         <Form>
             <img src={logo} alt="Logo" />
-            <input
+            <input data-test="email-input"
                 name="email"
                 value={form.email}
                 onChange={handleForm}
                 placeholder=" email"
                 type="text"
             />
-            <input
+            <input data-test="password-input"
                 name="password"
                 value={form.password}
                 onChange={handleForm}
                 placeholder=" senha"
                 type="text"
             />
-            <input
+            <input data-test="user-name-input"
                 name="name"
                 value={form.name}
                 onChange={handleForm}
                 placeholder=" nome"
                 type="text"
             />
-            <input
+            <input data-test="user-image-input"
                 name="image"
                 value={form.image}
                 onChange={handleForm}
                 placeholder=" foto"
                 type="text"
             />
-            <Button onClick={cadastrarUsuario}> <p>Cadastrar</p> </Button>
+            <Button data-test="signup-btn" onClick={cadastrarUsuario}> <p>Cadastrar</p> </Button>
 
-            <Link to={`/`}>
+            <Link data-test="login-link" to={`/`}>
                 <h1>Já tem uma conta? Faça login!</h1>
             </Link>
         </Form>

@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { AuthContext } from "./auth";
 import ListaHabitosHoje from "./ListaHabitosHoje";
+import Menu from "./Menu";
 
 export default function ScreenHoje() {
 const {user, setUser} = React.useContext(AuthContext)
@@ -29,19 +30,19 @@ useEffect(() => {
 
     return (
         <Screen>
-            <Header>
+            <Header data-test="header">
                 <h1>TrackIt</h1>
                 <img src={user.image} alt="Imagem usuário" />
             </Header>
             <Top>
-                <h1>Hoje</h1>
+                <h1 data-test="today">Hoje</h1>
             </Top>
-            {habitosCriados.map((info) => <ListaHabitosHoje key={info.id} info={info} />)}
-            <Bottom>
-                <Link to={`/habitos`}><p>Hábitos</p></Link>
-                <Link to={`/hoje`}><p>Hoje</p></Link>
-                <Link to={`/historico`}><p>Histórico</p></Link>
-            </Bottom>
+            {habitosCriados.map((info) => 
+            <ListaHabitosHoje 
+            key={info.id} 
+            info={info} 
+            />)}
+           <Menu/>
         </Screen>
     )
 }

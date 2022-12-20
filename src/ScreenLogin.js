@@ -32,22 +32,22 @@ export default function ScreenLogin() {
     return (
         <Login>
             <img src={logo} alt="Logo" />
-            <input
+            <input data-test="email-input"
                 name="email"
                 value={form.email}
                 onChange={handleForm}
                 placeholder=" email"
                 type="text"
             />
-            <input
+            <input data-test="password-input"
                 name="password"
                 value={form.password}
                 onChange={handleForm}
                 placeholder=" senha"
                 type="text"
             />
-            <Button onClick={login}> <p>Entrar</p>  </Button>
-            <Link to={`/cadastro`}>
+            <Button data-test="login-btn" onClick={login}> <p>Entrar</p>  </Button>
+            <Link data-test="signup-link" to={`/cadastro`}>
                 <h1>Não tem uma conta? Cadastre-se!</h1>
             </Link>
         </Login>

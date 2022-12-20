@@ -1,14 +1,28 @@
+import { useState } from "react"
 import styled from "styled-components"
 
-export default function ListaHabitosHoje({ info }) {
+export default function ListaHabitosHoje({info}) {
+   
+    const [finalizada, setfinalizada] = useState()
+
+    function finalizar(){
+        if (!finalizada) {
+            setfinalizada(true)
+          }
+    }
+
     return (
-        <HabitoCriado>
+        <HabitoCriado data-test="today-habit-container">
             <Info>
-                <h1>{info.name}</h1>
-                <p>Sequência atual:</p>
-                <p>Seu recorde:</p>
+                <h1 data-test="today-habit-name" >{info.name}</h1>
+                <p data-test="today-habit-sequence" >Sequência atual</p>
+                <p data-test="today-habit-record" >Seu recorde</p>
             </Info>
-            <ion-icon name="checkbox"></ion-icon>
+            {finalizada ? (
+              <ion-icon data-test="today-habit-check-btn" onClick={finalizar} style={{color: "green"}} name="checkbox"/>
+            ) : (
+              <ion-icon data-test="today-habit-check-btn" onClick={finalizar} name="checkbox"/>
+            )}
         </HabitoCriado>
     )
 }
